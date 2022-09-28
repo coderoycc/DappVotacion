@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Ver Votos</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="shortcut icon" href="favicon_16.ico"/>
+    <link rel="bookmark" href="favicon_16.ico"/>
+    <!-- site css -->
+    <link rel="stylesheet" href="css/site.min.css">
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,800,700,400italic,600italic,700italic,800italic,300italic" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="js/site.min.js"></script>
+    <style>
+      #vertgraph {
+        width: 320px;
+        height: 220px;
+        position: relative;
+        background-color: #E6E9ED;
+      }
+      #vertgraph ul {
+        width: 378px;
+        height: 220px;
+        margin: 0;
+        padding: 0;
+      }
+      #vertgraph ul li {
+        position: absolute;
+        width: 40px;
+        height: 160px;
+        bottom: 34px;
+        padding: 0 !important;
+        margin: 0 !important;
+        /* background-color: rgb(123,123,200); */
+        text-align: center;
+        font-weight: bold;
+        color: white;
+        line-height: 2.5em;
+        /* box-shadow: 3px .5px rgb(159, 159, 159); */
+      }
+      #vertgraph li.critical { 
+        left: 24px; 
+        background-color: rgb(212, 212, 212); 
+        box-shadow: 3px 1px rgb(167, 167, 167);
+      }
+      #vertgraph li.high { 
+        left: 101px; 
+        background-color: rgb(83, 83, 118); 
+        box-shadow: 3px 1px rgb(68, 68, 101);
+      }
+      #vertgraph li.medium { 
+        left: 176px; 
+        background-color: rgb(81, 94, 94);
+        box-shadow: 3px 1px rgb(64, 73, 73); 
+      }
+      #vertgraph li.low { 
+        left: 251px; 
+        background-color: rgb(105, 119, 40); 
+        box-shadow: 3px 1px rgb(102,101,101);
+      }
+      .contenido-barra{
+        width: 100%;
+        margin: 0 auto;
+      }
+      .titulos{
+        width: 100%;
+        margin: -15px auto;
+      }
+      #titulos{
+        width: 320px;
+        height: 35px;
+        position: relative;
+        background-color: #303641;
+        padding-top:6px;
+      }
+      .titulos span{
+        padding-left: 15px;
+        color:white;
+        font-size: 18px;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <!--nav-->
+    <nav role="navigation" class="navbar navbar-custom">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button data-target="#bs-content-row-navbar-collapse-5" data-toggle="collapse" class="navbar-toggle" type="button">
+            <span class="sr-only">Navegación desplegable</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a href="index.html" class="navbar-brand" style="font-weight: bold;"><img src="images/icono-urna.png" width="40px" height="auto"> &nbsp;Elecciones FUL</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div id="bs-content-row-navbar-collapse-5" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <!-- <li class="disabled"><a href="#">Link</a></li> -->
+            <li class="dropdown">
+              <a data-toggle="dropdown" class="dropdown-toggle" href="#">Más <b class="caret"></b></a>
+              <ul role="menu" class="dropdown-menu">
+                <li class="dropdown-header">No conectado</li>
+                <!-- <li class="divider"></li> -->
+              </ul>
+            </li>
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
+    <!--header-->
+    <div class="container-fluid">
+    <!--documents-->
+        <div class="row row-offcanvas row-offcanvas-left">
+          <div class="col-xs-6 col-sm-3 sidebar-offcanvas" role="navigation">
+            <ul class="list-group panel">
+                <li class="list-group-item"><i class="glyphicon glyphicon-align-justify"></i><b>PANEL</b></li>
+                <!-- <li class="list-group-item"><input type="text" class="form-control search-query" placeholder="Search Something"></li> -->
+                <a href="index.html"><li class="list-group-item"><i class="glyphicon glyphicon-home"></i>Inicio</li></a>
+                <a href="frentes.html"><li class="list-group-item"><i class="glyphicon glyphicon-list-alt"></i>Frentes habilitados</li></a>
+                <a href="votar.html"><li class="list-group-item"><i class="glyphicon glyphicon-ok"></i>Votar</li></a>
+                <a href="s-voto.html" class=""><li class="list-group-item actual"><i class="glyphicon glyphicon-eye-open"></i>Ver mi voto</li></a>
+                <a href="con_int.html"><li class="list-group-item"><i class="glyphicon glyphicon-file"></i>Contrato Inteligente</li></a>
+                <a href="consultas.html" ><li class="list-group-item"><i class="glyphicon glyphicon-warning-sign"></i>Consultas</li></a>
+              </ul>
+          </div>
+          <div class="col-xs-12 col-sm-9 content">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <a href="javascript:void(0);" class="toggle-sidebar"><span class="fa fa-angle-double-left" data-toggle="offcanvas" title="Maximize Panel"><h3 class="panel-title"> &nbsp;Panel de opciones</h3></span></a> 
+              </div>
+              <div class="panel-body">
+                <div class="content-row">
+                  <h2 class="content-row-title">Seguir los resultados</h2>
+                </div>
+                <!-- Barras de conteo -->
+                <div class="contenido-barra" id="vertgraph">
+                  <ul>
+                    <li class="critical" style="height: 1px;" id="BC">22</li>
+                    <li class="high" style="height: 1px;" id="REU">7</li>
+                    <li class="medium" style="height: 1px;" id="NU">3</li>
+                    <li class="low" style="height: 1px;" id="TPU">8</li>
+                  </ul>
+                </div>
+                <div class="titulos" id="titulos">
+                  <span>Blancos</span>
+                  <span>&nbsp;REU</span>
+                  <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NU</span>
+                  <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TPU</span>
+                </div>
+              </div><!-- panel body -->
+            </div>
+            
+        </div><!-- content -->
+      </div>
+    </div>
+    <!--footer-->
+    <div class="site-footer">
+      <div class="container">
+        <div class="download">
+          <span class="download__infos">Aplicación descentralizada bajo <b>Ethereum</b>.</span>&nbsp;&nbsp;&nbsp;&nbsp;
+        </div>
+        <hr class="dashed" />
+        <div class="row">
+          <div class="col-md-4">
+            <h3>Desarrolado</h3>
+            <p>DApp desarrollada por <a href="mailto:betocarlis11@gmail.com" target="_blank">Roberto C. Chambi Calizaya</a>. Se agradecen los comentarios, críticas, opiniones de retroalimentación para poder mejorar está aplicación descentralizada.</p>
+          </div>
+          <div class="col-md-4">
+            <h3>Contribución</h3>
+            <p>Elementos gráficos y de diseño:
+              <li><a href="https://sistinfo.uca.es">SISTINFO</a></li>
+              <li><a href="https://www.innovaciondigital360.com/blockchain">INNOVACION DIGITAL 360</a></li>
+              <li><a href="https://getbootstrap.com/docs/3.3/">BOOTSTRAP</a></li>
+            </p>
+          </div>
+          <div class="col-md-4">
+            <h3>Reportar errores</h3>
+            <p>Solicitar<a href="#"> soporte</a> en linea para exponer el inconveniente. También puede marcar al número <a href="#">2-2249909</a>.</p>
+          </div>
+        </div>
+        <hr class="dashed" />
+      </div>
+    </div>
+    <script src="js/web3.min.js"></script>
+    <!-- <script src="js/truffle-contract.js"></script> -->
+    <!-- <script src="./js/cont_votos.js"></script> -->
+    <!-- Script de control de voto -->
+    <script src="app.js"></script>
+  </body>
+</html>

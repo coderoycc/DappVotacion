@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Votar</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="shortcut icon" href="favicon_16.ico"/>
+    <link rel="bookmark" href="favicon_16.ico"/>
+    <!-- site css -->
+    <link rel="stylesheet" href="css/site.min.css">
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,800,700,400italic,600italic,700italic,800italic,300italic" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="js/site.min.js"></script>
+  </head>
+  <body>
+    <!--nav-->
+    <nav role="navigation" class="navbar navbar-custom">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button data-target="#bs-content-row-navbar-collapse-5" data-toggle="collapse" class="navbar-toggle" type="button">
+            <span class="sr-only">Navegación desplegable</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a href="index.html" class="navbar-brand" style="font-weight: bold;"><img src="images/icono-urna.png" width="40px" height="auto"> &nbsp;Elecciones FUL</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div id="bs-content-row-navbar-collapse-5" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <!-- <li class="active"><a href="getting-started.html">Contrato inteligible</a></li> -->
+            
+            <!-- <li class="active"><a id="dirCuenta">Conecta tu wallet</a></li> -->
+            
+            <!-- <li class="disabled"><a href="#">Link</a></li> -->
+            <li class="dropdown">
+              <a data-toggle="dropdown" class="dropdown-toggle" href="#">Más <b class="caret"></b></a>
+              <ul role="menu" class="dropdown-menu">
+                <li class="dropdown-header">No registrado</li>
+                <!-- <li class="divider"></li> -->
+                <!-- <li class="active"><a href="#">Iniciar sesión</a></li> -->
+                <!-- <li class="divider"></li> -->
+              </ul>
+            </li>
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
+    <!--header-->
+    <div class="container-fluid">
+    <!--documents-->
+        <div class="row row-offcanvas row-offcanvas-left">
+          <div class="col-xs-6 col-sm-3 sidebar-offcanvas" role="navigation">
+            <ul class="list-group panel">
+                <li class="list-group-item"><i class="glyphicon glyphicon-align-justify"></i><b>PANEL</b></li>
+                <!-- <li class="list-group-item"><input type="text" class="form-control search-query" placeholder="Search Something"></li> -->
+                <a href="index.html"><li class="list-group-item"><i class="glyphicon glyphicon-home"></i>Inicio</li></a>
+                <a href="frentes.html"><li class="list-group-item"><i class="glyphicon glyphicon-list-alt"></i>Frentes habilitados</li></a>
+                <a href="votar.html"><li class="list-group-item actual"><i class="glyphicon glyphicon-ok"></i>Votar</li></a>
+                <!-- <a href="s-voto.html" class="disabled"><li class="list-group-item disabled"><i class="glyphicon glyphicon-eye-open"></i>Ver mi voto</li></a> -->
+                <a href="s-voto.html"><li class="list-group-item"><i class="glyphicon glyphicon-eye-open"></i>Ver mi voto</li></a>
+                <a href="con_int.html"><li class="list-group-item"><i class="glyphicon glyphicon-file"></i>Contrato Inteligente</li></a>
+                <a href="consultas.html" ><li class="list-group-item"><i class="glyphicon glyphicon-warning-sign"></i>Consultas</li></a>
+              </ul>
+          </div>
+          <div class="col-xs-12 col-sm-9 content"> 
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <a href="javascript:void(0);" class="toggle-sidebar"><span class="fa fa-angle-double-left" data-toggle="offcanvas" title="Maximize Panel"><h3 class="panel-title"> &nbsp;Panel de opciones</h3></span></a> 
+              </div>
+              <div class="panel-body">
+                <div class="content-row">
+                  <h3 class="">Vota por tu candidato preferido</h3>
+                  <div class="col"></div>
+                </div>
+                <div class="content-row">
+                  <div class="row">
+                    <div class="col col-md-4 col-sm-6">
+                      <div class="pricing">
+                        <ul>
+                          <li class="unit price-primary">
+                            <div class="price-title">
+                              <h3>REU</h3>
+                              <p>Resistencia Estudiantil UMSA</p>
+                            </div>
+                            <div class="price-body">
+                              <img src="images/perfil_frente.png">
+                            </div>
+                            <div class="price-foot">
+                              <button type="button" class="btn btn-primary" onclick="votar('REU')">&nbsp;&nbsp; VOTAR &nbsp;&nbsp;</button>
+                            </div>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="col col-md-4 col-sm-6">
+                      <div class="pricing">
+                        <ul>
+                          <li class="unit price-primary">
+                            <div class="price-title">
+                              <h3>NU</h3>
+                              <p>Nueva U</p>
+                            </div>
+                            <div class="price-body">
+                              <img src="images/perfil_frente.png">
+                            </div>
+                            <div class="price-foot">
+                              <button type="button" class="btn btn-primary" onclick="votar('NU')">&nbsp;&nbsp; VOTAR &nbsp;&nbsp;</button>
+                            </div>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="col col-md-4 col-sm-6">
+                      <div class="pricing">
+                        <ul>
+                          <li class="unit price-primary">
+                            <div class="price-title">
+                              <h3>TPU</h3>
+                              <p>Todos Por la U</p>
+                            </div>
+                            <div class="price-body">
+                              <img src="images/perfil_frente.png">
+                            </div>
+                            <div class="price-foot">
+                              <button type="button" class="btn btn-primary" onclick="votar('TPU')">&nbsp;&nbsp; VOTAR &nbsp;&nbsp;</button>
+                            </div>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="col col-md-4 col-sm-6">
+                      <div class="pricing">
+                        <ul>
+                          <li class="unit price-primary">
+                            <div class="price-title">
+                              <h3>BC</h3>
+                              <p>Voto Blanco</p>
+                            </div>
+                            <div class="price-body">
+                              <img src="images/perfil_frente.png">
+                            </div>
+                            <div class="price-foot">
+                              <button type="button" class="btn btn-primary" onclick="votar('BC')">&nbsp;&nbsp; VOTAR &nbsp;&nbsp;</button>
+                            </div>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </div><!-- panel body -->
+        </div><!-- content -->
+      </div>
+    </div>
+    <!--footer-->
+    <div class="site-footer">
+      <div class="container">
+        <div class="download">
+          <span class="download__infos">Aplicación descentralizada bajo <b>Ethereum</b>.</span>&nbsp;&nbsp;&nbsp;&nbsp;
+        </div>
+        <hr class="dashed" />
+        <div class="row">
+          <div class="col-md-4">
+            <h3>Desarrolado</h3>
+            <p>DApp desarrollada por <a href="mailto:betocarlis11@gmail.com" target="_blank">Roberto C. Chambi Calizaya</a>. Se agradecen los comentarios, críticas, opiniones de retroalimentación para poder mejorar está aplicación descentralizada.</p>
+          </div>
+          <div class="col-md-4">
+            <h3>Contribución</h3>
+            <p>Elementos gráficos y de diseño:
+              <li><a href="https://sistinfo.uca.es">SISTINFO</a></li>
+              <li><a href="https://www.innovaciondigital360.com/blockchain">INNOVACION DIGITAL 360</a></li>
+              <li><a href="https://getbootstrap.com/docs/3.3/">BOOTSTRAP</a></li>
+            </p>
+          </div>
+          <div class="col-md-4">
+            <h3>Reportar errores</h3>
+            <p>Solicitar<a href="#"> soporte</a> en linea para exponer el inconveniente. También puede marcar al número <a href="#">2-2249909</a>.</p>
+          </div>
+        </div>
+        <hr class="dashed" />
+      </div>
+    </div>
+    <script src="js/web3.min.js"></script>
+    <script src="js/truffle-contract.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
