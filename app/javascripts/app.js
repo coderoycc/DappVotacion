@@ -5,11 +5,19 @@
 import { default as Web3} from 'web3';
 import { default as contract } from 'truffle-contract';
 
-import voting_artifacts from '../../build/contracts/Votacion.json'
+import voting_artifacts from '../../build/contracts/Votacion.json';
+
+//Import libreria de notificación
+// ES6 Modules or TypeScript
+import Swal from 'sweetalert2';
+
+// CommonJS
+const Swal = require('sweetalert2');
 
 var Voting = contract(voting_artifacts);
 
-let candidatos = {"Satoshi": "candidato-1", "Vitalik": "candidato-2"}
+const ethereumButton = document.querySelector('.enableEthereumButton');
+// let candidatos = {"Satoshi": "candidato-1", "Vitalik": "candidato-2"}
 
 window.votar = function(candidato) {
   let nombreCandidato = candidato;
@@ -26,60 +34,51 @@ window.votar = function(candidato) {
         console.log(res);
         return contractInstance.verVotos.call(nombreCandidato).then(function(v) {
           console.log("VOTOS POR "+nombreCandidato+" SON "+v.toString());
+          Swal.fire({
+            position: 'center', //top-end
+            icon: 'success',
+            title: 'Voto registrado',
+            showConfirmButton: false,
+            timer: 9500 //1500
+          });
         });
       });
     });
+    
   } catch (err) {
     console.log(err);
   }
 }
-// funcion para votar a un candidato que se pasa como parametro. Una vez minada la transaccion se actualiza el contador
-// window.votar = function(candidato) {
-//   let nombreCandidato = $("#candidato").val();
-//   try {
-//     $("#msg").html("Tu voto ha sido emitido. El número de votos se actualizará cuando la transacción sea minada. Espera.")
-//     $("#candidato").val("");
 
-//     Voting.deployed().then(function(contractInstance) {
-//       contractInstance.votar(nombreCandidato, {gas: 140000, from: web3.eth.accounts[0]}).then(function() {
-//         let div_id = candidatos[nombreCandidato];
-//         return contractInstance.votosTotales.call(nombreCandidato).then(function(v) {
-//           $("#" + div_id).html(v.toString());
-//           $("#msg").html("");
-//         });
-//       });
-//     });
-//   } catch (err) {
-//     console.log(err);
-//   }
-// }
-
-// cuando se carga la página se inicializa la conexión con la blockchain y se actualizan los votos de cada candidato
-/*
-$( document ).ready(function() {
-  if (typeof web3 !== 'undefined') {
-    console.warn("Usando web3 de fuente externa como Metamask")
-    window.web3 = new Web3(web3.currentProvider);
-  } else {
-    console.warn("No web3 detectado. Redirifiendo a http://localhost:7545.");
-    window.web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:7545"));
-  }
-
-  Voting.setProvider(web3.currentProvider);
-  let nombreCandidatos = Object.keys(candidatos);
-
-  for (var i = 0; i < nombreCandidatos.length; i++) {
-    let nombre = nombreCandidatos[i];
-    Voting.deployed().then(function(contractInstance) {
-      contractInstance.votosTotales.call(nombre).then(function(v) {
-        $("#" + candidatos[nombre]).html(v.toString());
-      });
+//ver los candidatos (Conteo)
+ethereumButton.addEventListener('click', () => {
+  var btn = document.getElementById("eth-btn");
+  if(window.ethereum.selectedAddress != null){
+    //votar alerta
+    Swal.fire({
+      position: 'top-end',
+      icon: 'success',
+      title: 'Estás Conectado',
+      showConfirmButton: false,
+      timer: 1500
     })
+    $("eth-btn").html("CONECTADO");
+  }else{
+  //Will Start the metamask extension
+    ethereum.request({ method: 'eth_requestAccounts' });
   }
 });
-*/
-//ver los candidatos (Conteo)
+
 $(document).ready(function() {
+  var botonEth = document.getElementById('eth-btn');
+  // $("#eth-btn").html("OEEEE");
+  console.log("XD");
+  if(window.ethereum.selectedAddress != null){
+    console.log("XXXXXD");
+    console.log("Conectado con: "+window.ethereum.selectedAddress);
+    // botonEth.disabled = "disabled";
+    botonEth.textContent = "CONECTADO";
+  }
   if(typeof web3 !== 'undefined'){
       console.warn("Usando WEB3 desde una fuente externa");
       window.web3 = new Web3(web3.currentProvider);
@@ -105,7 +104,6 @@ $(document).ready(function() {
             $("#"+sigla).html(cant.toString()+"%");
           return altura;
         }).then((a)=>{
-          console.log(a," XXXX ",sigla);
           for(var j=0;j<4;j++){
             var x = document.getElementById(sigla);
             if(x !== null && sigla==nombreCandidatos[j]){
@@ -115,6 +113,5 @@ $(document).ready(function() {
           }
         });
       });
-      
   }
 });
