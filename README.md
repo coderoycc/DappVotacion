@@ -25,6 +25,6 @@
       * `truffle compile`
       * `truffle migrate --reset`
   5. Finalmente ejecutar `npm run dev`
-* El servidor local se estará ejecutando en el puerto 7545 o el que definió en el archivo **truffle.js**
+* El servidor local se estará ejecutando en el puerto 7545 o en el que definió en el archivo **truffle.js**
 * Basta con ingresar al navegador con la direccion local y el puerto.
 
