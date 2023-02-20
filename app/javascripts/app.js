@@ -1,17 +1,10 @@
-// Import the page's CSS. Webpack will know what to do with it.
-// import "../stylesheets/app.css";
-
-// Import libraries we need.
+// Importación librerías necesarias.
 import { default as Web3} from 'web3';
 import { default as contract } from 'truffle-contract';
-
 import voting_artifacts from '../../build/contracts/Votacion.json';
-
-//Import libreria de notificación
-// ES6 Modules or TypeScript
 import Swal from 'sweetalert2';
 
-// CommonJS
+// Alertas
 const Swal = require('sweetalert2');
 
 var Voting = contract(voting_artifacts);
@@ -71,10 +64,8 @@ ethereumButton.addEventListener('click', () => {
 
 $(document).ready(function() {
   var botonEth = document.getElementById('eth-btn');
-  // $("#eth-btn").html("OEEEE");
   console.log("XD");
   if(window.ethereum.selectedAddress != null){
-    console.log("XXXXXD");
     console.log("Conectado con: "+window.ethereum.selectedAddress);
     // botonEth.disabled = "disabled";
     botonEth.textContent = "CONECTADO";
@@ -89,6 +80,7 @@ $(document).ready(function() {
 
   Voting.setProvider(web3.currentProvider);
   let nombreCandidatos = ["BC", "REU", "NU", "TPU"];
+  let numeros = [3,1,3,2]
   //Recorremos los candidatos
   var altura;
   for(var i = 0; i<nombreCandidatos.length; i++){

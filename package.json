@@ -35,6 +35,6 @@
     "webpack-dev-server": "^2.3.0"
   },
   "dependencies": {
-    "sweetalert2": "^11.5.1"
+    "sweetalert2": "^11.7.2"
   }
 }
