@@ -1,5 +1,6 @@
 var instancia;
 
+// Interactuamos con el contrato inteligente
 Votacion.deployed().then(function(contrato) {
   instancia = contrato;
   return contrato.votar("Satoshi", {from: "0x3fA0dAB0c92334569f3837a4a98a2e4a8A1a42c3"});
