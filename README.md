@@ -9,6 +9,7 @@
 <img src="./public/img/cap-votacion-inicio.jpg">
 <br /><br />
 
+
 ### Pantalla módulo de votación
 <img src="./public/img/cap-votacion.jpg">
 
